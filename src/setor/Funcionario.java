@@ -53,6 +53,6 @@ public abstract class Funcionario {
     }
     
     public abstract void mostrarDados();
-    public abstract void aplicarAumento();
+    public abstract void aplicarAumento(int porcentagem);
 }
 

@@ -4,16 +4,17 @@ public class Assalariado extends Funcionario  {
     
     @Override
     public void mostrarDados() {
-        System.out.println("nome: " + this.getNome());
-        System.out.println("CPF: " + this.getCpf());
-        System.out.println("Endereco: " + this.getEndereco());
-        System.out.println("Telefone: " + this.getTelefone());
-        System.out.println("Setor: " + this.getSetor());
-        
+        System.out.println("nome: " + getNome());
+        System.out.println("CPF: " + getCpf());
+        System.out.println("Endereco: " + getEndereco());
+        System.out.println("Telefone: " + getTelefone());
+        System.out.println("Setor: " + getSetor());
     }
     
     @Override
-    public void aplicarAumento() {
-    
+    public void aplicarAumento(int porcentagem) {
+        float salario = getSalario();
+        salario = (1 + (porcentagem / 100)) * salario;
+        setSalario(salario);
     }
 }
