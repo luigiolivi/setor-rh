@@ -3,7 +3,11 @@ package setor;
 public abstract class Funcionario {
     private String nome, cpf, endereco, telefone, setor;
     private float salario;
-
+    
+    public abstract void mostrarDados();
+    public abstract void aplicarAumento(int porcentagem);
+    
+    
     public String getNome() {
         return nome;
     }
@@ -51,8 +55,5 @@ public abstract class Funcionario {
     public void setSalario(float salario) {
         this.salario = salario;
     }
-    
-    public abstract void mostrarDados();
-    public abstract void aplicarAumento(int porcentagem);
 }
 
