@@ -43,6 +43,4 @@ public class Horista extends Funcionario {
     public static void setDias(int dias) {
         Horista.dias = dias;
     }
-    
-    
 }

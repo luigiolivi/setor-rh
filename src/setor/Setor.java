@@ -5,14 +5,12 @@ import java.util.Scanner;
 public class Setor {
     public static void main(String[] args) {
         Funcionario[] funcionarios = new Funcionario[10];
-        boolean parar = false;
+        
+        char continuar = 'S';
         int i = 0;
-
         do {
             String tipo;
             
-           
-                
             Scanner entrada = new Scanner (System.in);
             
             {
@@ -36,6 +34,9 @@ public class Setor {
                 
                 else {
                     funcionarios[i] = new Assalariado();
+                    
+                    System.out.println("Digite o salário mensal: ");
+                    funcionarios[i].setSalario(entrada.nextFloat());
                 }
                 
                 System.out.println("Digite o nome do funcionário: ");
@@ -52,14 +53,13 @@ public class Setor {
                 
                 System.out.println("Digite o setor do funcionário: ");
                 funcionarios[i].setSetor(entrada.next());
-                
-
             }
-                
-                
+
+            System.out.println("Deseja informar mais um usuário? (S/N)");
+            continuar = entrada.next().charAt(0);
                 
             i++;
-        } while(!parar || funcionarios.length == 10);
+        } while(continuar == 'S' || continuar == 's');
         
     }
 }
