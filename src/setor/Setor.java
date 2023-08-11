@@ -60,6 +60,18 @@ public class Setor {
                 
             i++;
         } while(continuar == 'S' || continuar == 's');
+        i = 0;
         
+        for (Funcionario f : funcionarios) {
+            System.out.println("Dados do funcionário " + i);
+            System.out.println("Nome :" + f.getNome());
+            System.out.println("CPF: " + f.getCpf());
+            System.out.println("Endereço: " + f.getEndereco());
+            System.out.println("Telefone: " + f.getTelefone());
+            System.out.println("Setor: " + f.getSetor());
+            System.out.println("Salário: " + f.getSalario());
+            
+            i++;
+        }
     }
 }
