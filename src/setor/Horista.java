@@ -1,11 +1,12 @@
 package setor;
 
 public class Horista extends Funcionario {
-    private float horas, valorHora;
+    private static float valorHora, horas;
+    private static int dias;
     
     @Override
     public void mostrarDados() {
-        System.out.println("nome: " + getNome());
+        System.out.println("Nome: " + getNome());
         System.out.println("CPF: " + getCpf());
         System.out.println("Endereco: " + getEndereco());
         System.out.println("Telefone: " + getTelefone());
@@ -18,4 +19,30 @@ public class Horista extends Funcionario {
         salario = (1 + (porcentagem / 100)) * salario;
         setSalario(salario);
     }
+
+    public static float getHoras() {
+        return horas;
+    }
+
+    public static void setHoras(float horas) {
+        Horista.horas = horas;
+    }
+
+    public static float getValorHora() {
+        return valorHora;
+    }
+
+    public static void setValorHora(float valorHora) {
+        Horista.valorHora = valorHora;
+    }
+
+    public static float getDias() {
+        return dias;
+    }
+
+    public static void setDias(int dias) {
+        Horista.dias = dias;
+    }
+    
+    
 }
