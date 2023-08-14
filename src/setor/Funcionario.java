@@ -55,14 +55,5 @@ public abstract class Funcionario {
     public void setSalario(float salario) {
         this.salario = salario;
     }
-
-    public Funcionario(String nome, String cpf, String endereco, String telefone, String setor, float salario) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.setor = setor;
-        this.salario = salario;
-    }
 }
 

@@ -14,7 +14,7 @@ public class Assalariado extends Funcionario  {
     @Override
     public void aplicarAumento(int porcentagem) {
         float salario = getSalario();
-        salario = (1 + (porcentagem / 100)) * salario;
-        setSalario(salario);
+        salario += (salario * porcentagem) / 100;
+        this.setSalario(salario);
     }
 }

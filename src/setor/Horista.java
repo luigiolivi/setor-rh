@@ -16,7 +16,7 @@ public class Horista extends Funcionario {
     @Override
     public void aplicarAumento(int porcentagem) {
         float salario = getSalario();
-        salario = (1 + (porcentagem / 100)) * salario;
+        salario += (salario * porcentagem) / 100;
         setSalario(salario);
     }
 

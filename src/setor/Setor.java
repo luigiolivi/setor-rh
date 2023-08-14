@@ -7,17 +7,18 @@ public class Setor {
         Funcionario[] funcionarios = new Funcionario[10];
         
         char continuar = 'S';
+        
+        Scanner entrada = new Scanner (System.in);
+
         int i = 0;
-        do {
-            String tipo;
-            
-            Scanner entrada = new Scanner (System.in);
+        while (continuar == 'S' || continuar == 's') {
+            char tipo;
             
             {
-                System.out.println("Digite o tipo do funcionário (assalariado/horista): ");
-                tipo = entrada.next();
+                System.out.println("\nDigite o tipo do funcionário (A/H): ");
+                tipo = entrada.next().charAt(0);
                 
-                if (tipo == "horista") {
+                if (tipo == 'H' || tipo == 'h') {
                     funcionarios[i] = new Horista();
                     
                     System.out.println("Digite o valor da hora: ");
@@ -26,8 +27,9 @@ public class Setor {
                     System.out.println("Digite a quantidade de horas trabalhadas: ");
                     Horista.setHoras(entrada.nextFloat());
                     
-                    System.out.println("Digite a quantidade de dias trabalhados ");
+                    System.out.println("Digite a quantidade de dias trabalhados no mês");
                     Horista.setDias(entrada.nextInt());
+                    entrada.nextLine();
                     
                     funcionarios[i].setSalario((Horista.getValorHora() * Horista.getHoras() * Horista.getDias()));
                 }
@@ -37,39 +39,60 @@ public class Setor {
                     
                     System.out.println("Digite o salário mensal: ");
                     funcionarios[i].setSalario(entrada.nextFloat());
+                    entrada.nextLine();
                 }
                 
                 System.out.println("Digite o nome do funcionário: ");
-                funcionarios[i].setNome(entrada.next());
+                funcionarios[i].setNome(entrada.nextLine());
                 
                 System.out.println("Digite o CPF do funcionário: ");
-                funcionarios[i].setCpf(entrada.next());
+                funcionarios[i].setCpf(entrada.nextLine());
                 
                 System.out.println("Digite o endereço do funcionário: ");
-                funcionarios[i].setEndereco(entrada.next());
+                funcionarios[i].setEndereco(entrada.nextLine());
                 
                 System.out.println("Digite o telefone do funcionário: ");
-                funcionarios[i].setTelefone(entrada.next());
+                funcionarios[i].setTelefone(entrada.nextLine());
                 
                 System.out.println("Digite o setor do funcionário: ");
-                funcionarios[i].setSetor(entrada.next());
+                funcionarios[i].setSetor(entrada.nextLine());
             }
 
             System.out.println("Deseja informar mais um usuário? (S/N)");
             continuar = entrada.next().charAt(0);
                 
+            if (funcionarios[9] != null) {
+                System.out.println("\nNumero máximo de funcionários registrados!");
+                
+                break;
+            }
+            
             i++;
-        } while(continuar == 'S' || continuar == 's');
-        i = 0;
+        } i = 1;
         
         for (Funcionario f : funcionarios) {
-            System.out.println("Dados do funcionário " + i);
-            System.out.println("Nome :" + f.getNome());
-            System.out.println("CPF: " + f.getCpf());
-            System.out.println("Endereço: " + f.getEndereco());
-            System.out.println("Telefone: " + f.getTelefone());
-            System.out.println("Setor: " + f.getSetor());
-            System.out.println("Salário: " + f.getSalario());
+            if (f == null) break;
+            
+            System.out.println("\nDados do funcionário " + i + ":");
+            f.mostrarDados();
+            System.out.println("Salário: R$" + f.getSalario());
+            
+            i++;
+        } i = 1;
+        
+        System.out.println("\nDigite o valor do aumento geral, em porcentagem (%): ");
+        int porcentagem = entrada.nextInt();
+        
+        System.out.println("Salários com aumento geral de " + porcentagem + "%: ");
+        for (Funcionario f : funcionarios) {
+            if (f == null) break;
+            f.aplicarAumento(porcentagem);
+        }
+        
+        for (Funcionario f : funcionarios) {
+            if (f == null) break;
+            
+            System.out.println("Funcionario " + i + ": R$" + f.getSalario());
             
             i++;
         }
